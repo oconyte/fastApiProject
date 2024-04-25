@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Database</title>
+</head>
+<body>
+    <h1>Add Student</h1>
+    <form action="/" method="post">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required><br><br>
+        <label for="birth_year">Birth Year:</label>
+        <input type="number" id="birth_year" name="birth_year" required><br><br>
+        <label for="birth_place">Birth Place:</label>
+        <input type="text" id="birth_place" name="birth_place" required><br><br>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select><br><br>
+        <label for="course">Course:</label>
+        <input type="number" id="course" name="course" required><br><br>
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+            <option value="PI">PI</option>
+            <option value="IST">IST</option>
+        </select><br><br>
+        <input type="submit" value="Add Student">
+    </form>
+
+    <h1>Students</h1>
+    <table border="1">
+        <tr>
+            <th>Full Name</th>
+            <th>Birth Year</th>
+            <th>Birth Place</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Course</th>
+            <th>Department</th>
+            <th>Action</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.full_name }}</td>
+            <td>{{ student.birth_year }}</td>
+            <td>{{ student.birth_place }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.gender }}</td>
+            <td>{{ student.course }}</td>
+            <td>{{ student.department }}</td>
+            <td>
+                <a href="/edit/{{ student.id }}">Edit</a> |
+                <a href="/delete/{{ student.id }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
